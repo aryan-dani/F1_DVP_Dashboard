@@ -14,9 +14,9 @@ meta = tables["meta"].iloc[0].to_dict() if not tables["meta"].empty else {}
 laps = tables["laps"]
 results = tables["results"]
 
-st.title("Formula 1 race-weekend dashboard")
+st.title("F1_DVP_Dashboard")
 st.caption(
-    "Data visualization with Python (DVP) — Streamlit + matplotlib/seaborn + FastF1"
+    "Formula 1 race-weekend DVP — Streamlit + matplotlib/seaborn + FastF1"
 )
 
 st.markdown(

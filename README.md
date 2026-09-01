@@ -1,4 +1,6 @@
-# Formula 1 race-weekend DVP dashboard
+# F1_DVP_Dashboard
+
+Formula 1 race-weekend DVP dashboard.
 
 Streamlit app for a Data Visualization with Python project. It **does not
 ship a CSV**. FastF1 downloads Formula 1 data from public APIs, the app

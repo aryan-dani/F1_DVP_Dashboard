@@ -20,7 +20,7 @@ from src.preprocess import build_processed_tables
 def configure_page(title: str) -> None:
     """Must be the first Streamlit call on each page."""
     st.set_page_config(
-        page_title=f"{title} | F1 DVP",
+        page_title=f"{title} | F1_DVP_Dashboard",
         layout="wide",
     )
 
@@ -45,7 +45,7 @@ def cached_tables(year: int, gp: str, identifier: str):
 
 def render_sidebar():
     """Year / event / session controls. Returns widget values and Load click."""
-    st.sidebar.title("F1 DVP Dashboard")
+    st.sidebar.title("F1_DVP_Dashboard")
     st.sidebar.caption(
         "Data is fetched through FastF1 from the F1 live-timing archive "
         "and Jolpica-F1. Nothing is hardcoded as a CSV."
