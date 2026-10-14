@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import warnings
 from typing import Any
 
 import pandas as pd
@@ -147,6 +148,26 @@ def load_processed(key: str) -> dict[str, pd.DataFrame] | None:
     if not all(path.exists() for path in paths.values()):
         return None
     return {name: pd.read_parquet(path) for name, path in paths.items()}
+
+
+def fastest_lap_delta(session, reference: str, compare: str):
+    """Time delta of ``compare`` against ``reference`` on their fastest laps.
+
+    Uses ``fastf1.utils.delta_time``. Returns
+    ``(delta, reference_telemetry, compare_telemetry)`` or ``None`` when
+    either lap has no telemetry.
+    """
+    try:
+        ref = session.laps.pick_drivers(reference).pick_fastest()
+        comp = session.laps.pick_drivers(compare).pick_fastest()
+        if ref is None or comp is None:
+            return None
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", FutureWarning)
+            delta, ref_tel, comp_tel = fastf1.utils.delta_time(ref, comp)
+    except Exception:
+        return None
+    return delta, pd.DataFrame(ref_tel), pd.DataFrame(comp_tel)
 
 
 def fastest_lap_car_data(session, driver: str) -> pd.DataFrame:

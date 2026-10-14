@@ -1,4 +1,5 @@
 fastf1>=3.8.0
-streamlit>=1.32.0
+streamlit>=1.40.0
+plotly>=5.24.0
 seaborn>=0.13.0
 pyarrow>=14.0.0
